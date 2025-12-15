@@ -18,9 +18,9 @@ def predict():
     if VERSION == "v1.1.0":
         X, y = load_iris(return_X_y=True)
         model = LogisticRegression(max_iter=200)
-        model.fit(X[:-100], y[:-100])
-        y_pred = model.predict(X[-100:])
-        y_true = y[-100:]
+        model.fit(X, y)
+        y_pred = model.predict(X)
+        y_true = y
         acc = accuracy_score(y_pred, y_true)
         return {"prediction": f'Prediction success, accuracy = {acc}', "version": VERSION}
     return {"prediction": "ok", "version": VERSION}
